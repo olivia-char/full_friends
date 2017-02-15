@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Full Friends</title>
+</head>
+<body>
+	<h1>Welcome to the Full Friends Page!</h1>
+	<h2>Friends List:</h2>
+	
+	{% for friend in all_friends: %}
+		<p>ID: {{friend["id"]}}</p>
+		<p>First Name: {{friend["first_name"]}}</p>
+		<p>Last Name: {{friend["last_name"]}}</p>
+		<p>Email: {{friend["email"]}}</p>
+	{% endfor %}
+	<hr>
+	<h2>Create a Friend:</h2>
+	<form action="/friends" method="post">
+		<label for="first_name">First Name:</label>
+		<input type="text" name="first_name"/>
+		<label for="last_name">Last Name:</label>
+		<input type="text" name="last_name"/>
+		<label for="email">Email:</label>
+		<input type="text" name="email">
+		<input type="submit" name="create" value="create" />
+	</form>
+	<hr>
+	<h2>Edit Friends</h2>
+	<form action="/friends/<id>/edit" method="post">
+		<input type="submit" value="edit">
+	</form>
+	<hr>
+	
+	<h2>Delete a Friend:</h2>
+	<form action="/friends/<id>/delete" method="post">
+		<label>Friend's ID:</label>
+		<input type="text" name="id">
+		<input type="submit" name="delete" value="delete">
+	</form>
+</body>
+</html>
